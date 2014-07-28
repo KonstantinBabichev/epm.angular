@@ -90,3 +90,12 @@ body {
     border-bottom: 0;
   }
 }
+
+
+input.ng-invalid.ng-dirty {
+  border-color: red;
+}
+
+input.ng-valid.ng-dirty {
+  border-color: green;
+}
