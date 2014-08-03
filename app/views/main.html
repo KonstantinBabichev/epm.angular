@@ -1,49 +1,7 @@
-<div class="row">
-  <div class="form__wrap">
-    <div class="pull-right">
-      <button class="btn btn-primary" ng-click="showForm = !showForm">New Post</button>
-    </div>
-    <div class="popUp__wrap" ng-class="{ 'popUp__wrap--active' : showForm }">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" ng-click="showForm = !showForm"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-            <h2 class="modal-title" id="myLargeModalLabel">Create new article:</h2>
-          </div>
-          <div class="modal-body">
-            <form name="articleForm" class="form" role="form" novalidate ng-submit="addArticle()">
-              <div class="form-group">
-                <input name="author" type="text" class="form-control" placeholder="Author" ng-model="newArticle.author" required>
-              </div>
-              <div class="form-group">
-                <input name="title" type="text" class="form-control" placeholder="Title" ng-model="newArticle.title" required>
-              </div>
-              <div class="form-group">
-                <input name="image" type="text" class="form-control" placeholder="Image url" ng-model="newArticle.image">
-                <span>* images/article-1.jpg</span>
-              </div>
-              <div class="form-group">
-                <textarea id="introText" name="introText" class="form-control" placeholder="Text" ng-model="newArticle.introText" required></textarea>
-              </div>
-              <div class="controls">
-                <button id="save" name="save" class="btn btn-primary" type="submit" ng-disabled="articleForm.$invalid" ng-disabled="articleForm.$invalid">Add article</button>
-                <button id="reset" name="reset" class="btn btn-danger" type="reset" ng-click="resetForm()">Reset</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="row form">
+  <blog-form></blog-form>
+</div>
 
-  <article class="article blog-post" ng-repeat="article in articles">
-    <h3 class="article__title"><span>{{article.title}}</span></h3>
-    <figure class="article__image">
-      <img class="img-responsive" ng-src="{{article.image}}" alt="{{article.title}}"/>
-    </figure>
-    <p>{{article.introText}}</p>
-    <h4 class="article__author">by {{article.author}}</h4>
-    <h5 class="article__date">{{article.date}}</h5>
-  </article>
-
+<div class="row blog">
+    <blog-post ng-repeat="article in articles"></blog-post>
 </div>

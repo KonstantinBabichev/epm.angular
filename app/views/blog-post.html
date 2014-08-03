@@ -1,0 +1,9 @@
+<article class="article blog-post">
+  <h3 class="article__title"><span>{{article.title}}</span></h3>
+  <figure class="article__image" ng-if="article.image">
+    <img class="img-responsive" ng-src="{{article.image}}" alt="{{article.title}}"/>
+  </figure>
+  <p>{{article.introText}}</p>
+  <h4 class="article__author">by {{article.author}}</h4>
+  <h5 class="article__date">{{article.date}}</h5>
+</article>
