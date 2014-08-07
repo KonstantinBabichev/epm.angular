@@ -112,7 +112,7 @@ img {
 }
 
 .popUp__wrap {
-  display: none;
+  //display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -121,7 +121,7 @@ img {
   width: 100%;
   background: rgba(black, .5);
   &.popUp__wrap--active {
-    display: block;
+    //display: block;
   }
 }
 

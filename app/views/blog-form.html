@@ -2,7 +2,7 @@
   <div class="pull-right">
     <button class="btn btn-primary" ng-click="showForm = !showForm">New Post</button>
   </div>
-  <div class="popUp__wrap" ng-class="{ 'popUp__wrap--active' : showForm }">
+  <div class="popUp__wrap" ng-show="showForm">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
