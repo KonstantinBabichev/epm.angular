@@ -22,10 +22,11 @@
               <span>* images/article-1.jpg</span>
             </div>
             <div class="form-group">
-              <textarea id="introText" name="introText" class="form-control" placeholder="Text" ng-model="newArticle.introText" required></textarea>
+              <textarea id="introText" name="introText" class="form-control" placeholder="Text" ng-model="newArticle.body" required></textarea>
             </div>
             <div class="controls">
-              <button id="save" name="save" class="btn btn-primary" type="submit" ng-disabled="articleForm.$invalid" ng-disabled="articleForm.$invalid">Add article</button>
+              <button id="save" name="save" class="btn btn-primary" type="submit" ng-disabled="articleForm.$invalid" ng-show="!editingArticle">Add article</button>
+              <button id="edit" name="edit" class="btn btn-primary" type="submit" ng-disabled="articleForm.$invalid" ng-show="editingArticle">Edit article</button>
               <button id="reset" name="reset" class="btn btn-danger" type="reset" ng-click="resetForm()">Reset</button>
             </div>
           </form>

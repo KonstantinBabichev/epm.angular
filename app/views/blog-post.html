@@ -3,7 +3,13 @@
   <figure class="article__image" ng-if="article.image">
     <img class="img-responsive" ng-src="{{article.image}}" alt="{{article.title}}"/>
   </figure>
-  <p>{{article.introText}}</p>
+  <div class="article__body">
+    <p>{{article.body}}</p>
+  </div>
+  <div class="pull-left">
+    <button class="btn btn-info" ng-click="editArticle(article)">Edit</button>
+    <button class="btn btn-danger" ng-click="deleteArticle(article)">Delete</button>
+  </div>
   <h4 class="article__author">by {{article.author}}</h4>
   <h5 class="article__date">{{article.date}}</h5>
 </article>
