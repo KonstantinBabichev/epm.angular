@@ -11,8 +11,4 @@ describe('Service: articles', function () {
     articles = _articles_;
   }));
 
-  it('should do something', function () {
-    expect(!!articles).toBe(true);
-  });
-
 });

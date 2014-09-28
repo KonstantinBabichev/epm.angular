@@ -8,17 +8,16 @@
  * Controller of the fuzzyApp
  */
 angular.module('fuzzyApp')
-  .controller('MainCtrl', function ($scope, $filter, $http, $resource, Articles) {
-//    $http({method: 'GET', url: 'http://54.72.3.96:3000/posts'}).
-//      success(function(data, status, headers, config) {
-//        console.log(data, status, headers, config);
-//      }).
-//      error(function(data, status, headers, config) {
-//        console.warn(data, status, headers, config);
-//      });
+  .controller('MainCtrl', function ($scope, $filter, $http, $resource, Articles, articleHelper) {
 
     $scope.refreshArticles = function () {
       $scope.articles = Articles.query();
+
+      $scope.articles.$promise.then(function () {
+        angular.forEach($scope.articles, function (article) {
+          article.body = articleHelper.cut(article.body);
+        });
+      });
     };
 
     $scope.addArticle = function () {
