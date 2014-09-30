@@ -11,7 +11,7 @@ angular.module('fuzzyApp')
   .service('articleHelper', function articleHelper() {
     this.cut = function (articleText) {
       if (articleText) {
-        return articleText.slice(0, 200);
+        return articleText.slice(0, 100);
       }
     };
   });
