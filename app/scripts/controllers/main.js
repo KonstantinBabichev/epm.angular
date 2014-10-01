@@ -52,7 +52,7 @@ angular.module('fuzzyApp')
     };
 
     $scope.resetForm = function () {
-      $scope.articleForm.$setPristine();
+      if ($scope.articleForm) $scope.articleForm.$setPristine();
       $scope.newArticle = {};
       $scope.editingArticle = false;
     };
