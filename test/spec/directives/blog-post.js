@@ -24,7 +24,7 @@ describe('Directive: blogPost', function () {
     scope.$digest();
   }));
 
-  it('should make hidden element visible', inject(function ($compile) {
+  it('title should be in right place', inject(function ($compile) {
     expect(element.find('span').text()).toBe(article.title);
   }));
 });

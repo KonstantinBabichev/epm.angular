@@ -24,7 +24,10 @@ describe('Directive: blogForm', function () {
     scope.$digest();
   }));
 
-  it('should make hidden element visible', inject(function ($compile) {
-    expect(element.find('span').text()).toBe(article.title);
+  it('author should be in .form-control--author input', inject(function () {
+    var el = element[0].querySelectorAll('.form-control--author'),
+      author = angular.element(el).val();
+
+    expect(author).toBe(article.author);
   }));
 });
