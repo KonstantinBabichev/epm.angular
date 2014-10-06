@@ -12,6 +12,6 @@ angular.module('fuzzyApp')
       restrict: 'EA',
       replace: true,
       scope: false,
-      templateUrl: '/views/blog-form.html'
+      templateUrl: 'views/blog-form.html'
     };
   });
