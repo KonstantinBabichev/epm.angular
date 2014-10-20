@@ -5,7 +5,7 @@ describe('Controller: ArticleCtrl', function () {
   // load the controller's module
   beforeEach(module('fuzzyApp'));
 
-  var $httpBackend,
+  var articlesFactory,
     ArticleCtrl,
     scope,
     article = {
@@ -14,13 +14,12 @@ describe('Controller: ArticleCtrl', function () {
       body: 'Lorem Ipsum',
       date: '2014/10/01',
       title: 'Title 4'
-    },
-    articleUrl = 'http://54.72.3.96:3000/posts/' + article._id;
+    };
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope, $injector) {
-    $httpBackend = $injector.get('$httpBackend');
-    $httpBackend.when('GET', articleUrl).respond(article);
+    articlesFactory = $injector.get('Articles');
+    spyOn(articlesFactory, 'get').andReturn(article);
 
     scope = $rootScope.$new();
     ArticleCtrl = $controller('ArticleCtrl', {
@@ -31,13 +30,7 @@ describe('Controller: ArticleCtrl', function () {
     });
   }));
 
-  afterEach(function() {
-    $httpBackend.verifyNoOutstandingExpectation();
-    $httpBackend.verifyNoOutstandingRequest();
-  });
-
-  it('should attach a list of awesomeThings to the scope x', function () {
-    $httpBackend.flush();
+  it('should add article to scope', function () {
     expect(scope.article.title).toBe(article.title);
   });
 });

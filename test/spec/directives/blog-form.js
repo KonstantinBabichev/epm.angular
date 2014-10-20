@@ -24,10 +24,11 @@ describe('Directive: blogForm', function () {
     scope.$digest();
   }));
 
-  it('author should be in .form-control--author input', inject(function () {
+  it('author should be in .form-control--author input', function () {
     var el = element[0].querySelectorAll('.form-control--author'),
-      author = angular.element(el).val();
+      author = el[0].value;
 
     expect(author).toBe(article.author);
-  }));
+  });
+
 });

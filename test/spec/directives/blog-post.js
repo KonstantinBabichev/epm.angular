@@ -24,7 +24,8 @@ describe('Directive: blogPost', function () {
     scope.$digest();
   }));
 
-  it('title should be in right place', inject(function ($compile) {
+  it('title should be in right place', function () {
     expect(element.find('span').text()).toBe(article.title);
-  }));
+  });
+
 });

@@ -10,8 +10,12 @@
 angular.module('fuzzyApp')
   .controller('MainCtrl', function ($scope, $filter, $http, $resource, Articles, articleHelper) {
 
-    $scope.refreshArticles = function () {
+    $scope.getArticles = function () {
       $scope.articles = Articles.query();
+    };
+
+    $scope.refreshArticles = function () {
+      $scope.getArticles();
 
       $scope.articles.$promise.then(function () {
         angular.forEach($scope.articles, function (article) {

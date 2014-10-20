@@ -5,7 +5,7 @@ describe('Controller: MainCtrl', function () {
   // load the controller's module
   beforeEach(module('fuzzyApp'));
 
-  var $httpBackend,
+  var articlesFactory,
     MainCtrl,
     scope,
     newArticle = {
@@ -40,45 +40,36 @@ describe('Controller: MainCtrl', function () {
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope, $injector) {
-    $httpBackend = $injector.get('$httpBackend');
-    $httpBackend.when('GET', 'http://54.72.3.96:3000/posts').respond(queryRespond);
-    $httpBackend.when('PUT', 'http://54.72.3.96:3000/posts/540d73dafef38b74188ecde5').respond(newArticle);
+    articlesFactory = $injector.get('Articles');
 
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
       $scope: scope
     });
-  }));
 
-  afterEach(function() {
-    $httpBackend.verifyNoOutstandingExpectation();
-    $httpBackend.verifyNoOutstandingRequest();
-  });
+    // This yeoman generator uses jasmine 0.x.x version, so this is old syntax
+    spyOn(articlesFactory, 'query').andReturn(queryRespond);
+  }));
 
   // Getting array of articles through articlesFabric
   it('should get array of articles', function () {
     expect(scope.articles.length).toBe(0);
-    scope.refreshArticles();
 
-    $httpBackend.flush();
+    scope.getArticles();
 
     expect(scope.articles.length).toBeGreaterThan(0);
   });
 
   // Getting array of articles through articlesFabric -> adding one more article to server -> refreshing articles list from server
-  it('should add one more article to articles list', function () {
+ it('should add one more article to articles list', function () {
     var articlesOldLength;
-    scope.refreshArticles();
-
-    $httpBackend.flush();
+    scope.getArticles();
 
     articlesOldLength = scope.articles.length;
     scope.newArticle = newArticle;
     queryRespond.push(newArticle);
     scope.addArticle();
 
-    $httpBackend.flush();
-
-    expect(scope.articles.length).toBeGreaterThan(articlesOldLength);
-  });
+    expect(scope.articles.length).toBe(articlesOldLength + 1);
+ });
 });
